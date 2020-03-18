@@ -10,7 +10,7 @@ const config = {
       './src/client.js'
     ]
   },
-  
+
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].js'
@@ -40,8 +40,10 @@ const config = {
     splitChunks: {
       cacheGroups: {
         vendor: {
+          chunks: 'initial',
           name: 'vendor',
-          test: module => /node_modules/.test(module.resource)
+          test: module => /node_modules/.test(module.resource),
+          enforce: true,
         },
       },
     }
